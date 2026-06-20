@@ -1,0 +1,6 @@
+{
+  "name": "Pocha Food Hub",
+  "description": "A digital menu and storefront for Pocha Food Hub featuring their specialty milk teas, location, services, and story.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
