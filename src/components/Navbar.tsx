@@ -27,7 +27,6 @@ export default function Navbar({ cartCount, onCartClick }: NavbarProps) {
     { name: 'Digital Menu', href: '#menu' },
     { name: 'Services', href: '#services' },
     { name: 'Our Location', href: '#location' },
-    { name: 'About Us', href: '#about' },
   ];
 
   return (

@@ -246,7 +246,7 @@ export const MENU_ITEMS: MenuItem[] = [
     name: 'Bottled Water',
     price: 29,
     description: 'Refreshing purified drinking water (500 ml).',
-    image: 'https://images.unsplash.com/photo-1548839130-3fd96cd5cc49?w=500&auto=format&fit=crop&q=60',
+    image: '/assets/aistudio/image_bae3e48b.png',
     category: 'other'
   }
 ];
@@ -269,12 +269,6 @@ export const SERVICES: ServiceItem[] = [
     title: 'Instant Delivery Partner',
     description: 'Craving comfort from home? We are live on GrabFood and Foodpanda! Get fresh, icy-cold boba delivered straight to your doorstep.',
     iconName: 'Bike'
-  },
-  {
-    id: 'catering',
-    title: 'Catering & Bulk Orders',
-    description: 'Elevate your birthdays, school events, or corporate sessions! We cater customized DIY boba bars and warm street platter bundles.',
-    iconName: 'Sparkles'
   }
 ];
 
@@ -282,14 +276,18 @@ export const STORE_INFO = {
   name: 'Pocha Food Hub',
   tagline: "Sip, Snack, and Smile: Bacolod's Ultimate Destination for Premium Boba & Munchies",
   logo: pochaImage,
-  address: 'JXW4+953, Fuentebella St, Bacolod, 6100 Negros Occidental, Philippines',
-  directionsHelp: 'Conveniently located along Fuentebella Street in Bacolod. Look for the bright cozy green sign!',
+  address: 'JXW4+953, Fuentebella St, Bacolod, 6100 Negros Occidental',
+  plusCode: 'JXW4+953',
+  googleMapsPlaceName: "Po'Cha Food Hub (PoCha)",
+  googleMapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Po'Cha Food Hub (PoCha), JXW4+953, Fuentebella St, Bacolod, 6100 Negros Occidental")}`,
+  directionsUrl: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent("Po'Cha Food Hub (PoCha), JXW4+953, Fuentebella St, Bacolod, 6100 Negros Occidental")}`,
+  directionsHelp: 'Conveniently located along Fuentebella Street in Bacolod (Puentebella Subd area, near DYKR/DYCP XFM). Look for the cozy store sign!',
   hours: [
     { days: 'Monday – Thursday', time: '11:00 AM – 9:00 PM' },
     { days: 'Friday – Sunday', time: '11:00 AM – 10:00 PM' }
   ],
-  phone: '+63 917 123 4567',
-  telephone: '(02) 8876-5432',
+  phone: '0999 917 7737',
+  telephone: '+63 999 917 7737',
   email: 'hello@pochafoodhub.com',
   socials: {
     facebook: 'https://web.facebook.com/PoChaOfficial',

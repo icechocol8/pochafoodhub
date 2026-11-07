@@ -171,7 +171,7 @@ export default function Menu({
                 <img 
                   src={item.image} 
                   alt={item.name} 
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  className={`w-full h-full ${item.id === 'bottled-water' ? 'object-contain p-3 bg-slate-50' : 'object-cover'} group-hover:scale-105 transition-transform duration-700`}
                   referrerPolicy="no-referrer"
                   onError={(e) => {
                     // Fallbacks for broken links
@@ -199,7 +199,7 @@ export default function Menu({
                 <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm shadow-md rounded-xl py-1.5 px-3.5 border border-stone-200">
                   <span className="font-display font-black text-base text-[#1E3F16]">
                     {item.variations && item.variations.length > 0
-                      ? `₱${Math.min(...item.variations.map(v => v.price))}+`
+                      ? `₱${Math.min(...item.variations.map(v => v.price))}.00`
                       : `₱${item.price}.00`
                     }
                   </span>
@@ -254,7 +254,7 @@ export default function Menu({
                 )}
 
                 {item.variations && item.variations.length > 0 && (
-                  <div className="mb-6 p-4 bg-[#FAFDF9] border border-[#DEEDE0] rounded-2xl">
+                  <div className="mt-auto p-4 bg-[#FAFDF9] border border-[#DEEDE0] rounded-2xl">
                     <span className="font-display font-extrabold text-[10px] text-[#224F18] uppercase tracking-wider block mb-2">
                       Variations:
                     </span>
@@ -272,15 +272,6 @@ export default function Menu({
                     </div>
                   </div>
                 )}
-
-                {/* Add trigger */}
-                <button
-                  onClick={() => handleOpenCustomize(item)}
-                  className="w-full mt-auto flex items-center justify-center gap-2 bg-[#F2F7F2] hover:bg-[#52B447] text-[#1E3F16] hover:text-white font-display font-extrabold text-xs py-3 rounded-2xl transition-all border border-[#CBDDC7] hover:border-transparent cursor-pointer"
-                >
-                  <Plus className="w-4 h-4" />
-                  <span>Configure & Add</span>
-                </button>
               </div>
             </motion.div>
           ))}
@@ -430,7 +421,7 @@ export default function Menu({
                     <span className="text-3xl mb-4">🛒</span>
                     <span className="font-display font-bold text-sm text-gray-600">Your draft order sheet is empty</span>
                     <span className="text-xs text-gray-400 max-w-xs mt-1 leading-normal">
-                      Browse our list, click "Configure & Add", then customize your drink level ratios!
+                      Browse our menu and explore our beverages and snacks!
                     </span>
                     <button
                       onClick={() => setIsCartOpen(false)}

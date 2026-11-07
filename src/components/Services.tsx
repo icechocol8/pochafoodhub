@@ -29,8 +29,8 @@ export default function Services() {
           <div className="h-1.5 w-16 bg-[#52B447] mx-auto rounded-full mt-4" />
         </div>
 
-        {/* 4 Cards bento/grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* 3 Cards bento/grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {SERVICES.map((srv, index) => (
             <motion.div
               key={srv.id}

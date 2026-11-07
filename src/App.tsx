@@ -4,7 +4,6 @@ import Hero from './components/Hero';
 import Menu from './components/Menu';
 import Services from './components/Services';
 import Location from './components/Location';
-import About from './components/About';
 import { CartItem, MenuItem } from './types';
 import { STORE_INFO } from './data';
 import { Facebook, Instagram, Phone, MapPin, Clock, MessageSquare, Coffee } from 'lucide-react';
@@ -94,9 +93,6 @@ export default function App() {
         {/* Location + Live Hours Map segment */}
         <Location />
 
-        {/* Concept Story / Heritage */}
-        <About />
-
       </main>
 
       {/* Solid, elegant Footer */}
@@ -163,7 +159,6 @@ export default function App() {
                 <li><a href="#menu" className="hover:text-white hover:underline transition-colors">&rarr; Digital Menu</a></li>
                 <li><a href="#services" className="hover:text-white hover:underline transition-colors">&rarr; Store Services</a></li>
                 <li><a href="#location" className="hover:text-white hover:underline transition-colors">&rarr; Location & Maps</a></li>
-                <li><a href="#about" className="hover:text-white hover:underline transition-colors">&rarr; Story & Philosophy</a></li>
               </ul>
             </div>
 
@@ -174,9 +169,25 @@ export default function App() {
               </h4>
               <ul className="space-y-3 text-xs text-gray-400 font-sans">
                 <li className="flex items-start gap-2.5">
+                  <MapPin className="w-4 h-4 text-[#52B447] shrink-0 mt-0.5" />
+                  <div>
+                    <a 
+                      href={STORE_INFO.googleMapsUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="block text-gray-300 font-medium hover:text-[#52B447] transition-colors"
+                    >
+                      {STORE_INFO.address}
+                    </a>
+                    <span className="text-[10px] text-gray-500">Click to open Google Maps</span>
+                  </div>
+                </li>
+                <li className="flex items-start gap-2.5">
                   <Phone className="w-4 h-4 text-[#52B447] shrink-0 mt-0.5" />
                   <div>
-                    <span className="block text-gray-300 font-medium">{STORE_INFO.phone}</span>
+                    <a href={`tel:${STORE_INFO.phone}`} className="block text-gray-300 font-medium hover:text-white">
+                      {STORE_INFO.phone}
+                    </a>
                     <span className="text-[10px] text-gray-500">Mobile Support</span>
                   </div>
                 </li>

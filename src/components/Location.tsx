@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { MapPin, Clock, Phone, Send, ExternalLink, MessageCircle } from 'lucide-react';
+import { MapPin, Clock, Phone, Send, ExternalLink, MessageCircle, Star, Navigation } from 'lucide-react';
 import { STORE_INFO } from '../data';
 
 export default function Location() {
@@ -79,16 +79,36 @@ export default function Location() {
 
             {/* Address and directions card */}
             <div className="bg-white rounded-3xl p-6.5 border border-gray-100 shadow-sm text-left flex-1 flex flex-col">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2.5 bg-[#EEF8EE] rounded-xl text-[#52B447]">
-                  <MapPin className="w-5 h-5" />
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2.5 bg-[#EEF8EE] rounded-xl text-[#52B447]">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-display font-black text-[#1E3F16] text-lg">{STORE_INFO.googleMapsPlaceName}</h3>
+                    <span className="text-[11px] text-gray-400 font-sans">Bacolod City, Negros Occidental</span>
+                  </div>
                 </div>
-                <h3 className="font-display font-black text-[#1E3F16] text-lg">Store Address</h3>
+                <a
+                  href={STORE_INFO.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-bold text-[#52B447] hover:underline flex items-center gap-1 bg-[#EEF8EE] px-3 py-1.5 rounded-full"
+                >
+                  <span>Open Maps</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
               </div>
               
-              <p className="font-sans text-sm text-gray-600 mb-4 leading-relaxed">
-                {STORE_INFO.address}
-              </p>
+              <div className="mb-4">
+                <span className="text-[10px] uppercase font-bold text-gray-400 tracking-wider block mb-1">Exact Address</span>
+                <p className="font-sans text-sm font-semibold text-gray-700 leading-relaxed">
+                  {STORE_INFO.address}
+                </p>
+                <span className="inline-block mt-1 font-mono text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded">
+                  Plus Code: {STORE_INFO.plusCode}
+                </span>
+              </div>
               
               <div className="bg-[#FAFDF9] border border-[#DEEDE0] p-4 rounded-2xl mb-6">
                 <h4 className="font-display font-bold text-xs text-[#224F18] uppercase tracking-wide mb-1 flex items-center gap-1">
@@ -106,7 +126,7 @@ export default function Location() {
                   className="flex items-center justify-center gap-2 bg-[#F2F7F2] hover:bg-[#E1F2E0] text-[#1E3F16] font-display font-extrabold text-xs py-3.5 rounded-2xl transition-all border border-[#CBDDC7]"
                 >
                   <Phone className="w-4 h-4 text-[#52B447]" />
-                  <span>Call Mobile</span>
+                  <span>Call {STORE_INFO.phone}</span>
                 </a>
                 <a 
                   href={STORE_INFO.socials.messenger}
@@ -122,75 +142,90 @@ export default function Location() {
 
           </div>
 
-          {/* Card Right: Mock Map container */}
+          {/* Card Right: Live Interactive Map */}
           <div className="lg:col-span-7 flex">
             
-            <div className="bg-white rounded-3xl p-4 border border-gray-100 shadow-sm w-full h-full flex flex-col min-h-[350px]">
+            <div className="bg-white rounded-3xl p-4 border border-gray-100 shadow-sm w-full h-full flex flex-col min-h-[460px]">
               
               {/* Map drawing header */}
               <div className="flex items-center justify-between px-3 py-2 border-b border-gray-100 mb-3">
                 <div className="flex items-center gap-2 text-xs font-semibold text-gray-500">
                   <span className="w-2.5 h-2.5 bg-red-500 rounded-full animate-ping" />
-                  <span>Live Store GPS Tracker (Bacolod City)</span>
+                  <span>Live Store GPS: Fuentebella St, Bacolod</span>
                 </div>
                 <a 
-                  href={`https://google.com/maps/search/?api=1&query=${encodeURIComponent(STORE_INFO.address)}`} 
+                  href={STORE_INFO.googleMapsUrl} 
                   target="_blank" 
-                  rel="noreferrer"
-                  className="text-xs font-bold text-[#52B447] hover:underline flex items-center gap-1 focus:outline-none"
+                  rel="noopener noreferrer"
+                  className="text-xs font-bold text-[#52B447] hover:underline flex items-center gap-1.5 focus:outline-none bg-[#EEF8EE] px-3 py-1 rounded-full"
                 >
-                  <span>Open in Maps</span>
+                  <MapPin className="w-3.5 h-3.5 text-red-500" />
+                  <span>Open in Google Maps</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </div>
 
-              {/* Graphical representation of Quezon City grid */}
-              <div className="bg-[#EBF1E9] rounded-2xl flex-1 relative overflow-hidden border border-gray-100 group flex items-center justify-center">
+              {/* Map embed container with Google Maps place card overlay */}
+              <div className="relative flex-1 rounded-2xl overflow-hidden border border-gray-200 bg-stone-100 min-h-[320px]">
                 
-                {/* SVG Mock Map details */}
-                <svg className="absolute inset-0 w-full h-full opacity-60" xmlns="http://www.w3.org/2000/svg">
-                  {/* Street network paths */}
-                  <line x1="0" y1="100" x2="1000" y2="100" stroke="#FFFFFF" strokeWidth="18" />
-                  <line x1="0" y1="300" x2="1000" y2="300" stroke="#FFFFFF" strokeWidth="24" />
-                  <line x1="300" y1="0" x2="300" y2="600" stroke="#FFFFFF" strokeWidth="16" />
-                  <line x1="750" y1="0" x2="750" y2="600" stroke="#FFFFFF" strokeWidth="20" />
-                  <line x1="0" y1="0" x2="1000" y2="500" stroke="#FFFFFF" strokeWidth="10" strokeDasharray="5,5" />
-                  
-                  {/* Rivers / parks */}
-                  <rect x="10" y="10" width="180" height="70" fill="#CFE3CC" rx="10" />
-                  <rect x="420" y="150" width="200" height="110" fill="#CFE3CC" rx="15" />
-                  
-                  {/* Surrounding Landmarks */}
-                  <text x="50" y="45" fill="#4B6E47" fontFamily="sans-serif" fontSize="10" fontWeight="bold">BACOLOD PLAZA</text>
-                  <text x="320" y="80" fill="#888888" fontFamily="sans-serif" fontSize="10">FUENTEBELLA STREET</text>
-                  <text x="560" y="325" fill="#888888" fontFamily="sans-serif" fontSize="10">ARANETA STREET</text>
-                  <text x="780" y="180" fill="#555555" fontFamily="sans-serif" fontSize="10" fontWeight="bold">SM CITY BACOLOD (SHORT DRIVE)</text>
-                </svg>
+                {/* Live OpenStreetMap iframe showing exact coordinates for Fuentebella St */}
+                <iframe
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=122.956%2C10.641%2C122.965%2C10.649&amp;layer=mapnik&amp;marker=10.645265%2C122.96072"
+                  className="w-full h-full border-0 min-h-[320px]"
+                  title="Po'Cha Food Hub Location Map"
+                  loading="lazy"
+                />
 
-                {/* Simulated Grid Landmarks */}
-                <div className="absolute top-1/4 left-1/3 bg-white border border-stone-200 px-3 py-1.5 rounded-full shadow-md text-[10px] font-bold text-gray-600 flex items-center gap-1">
-                  <span>⛪ San Sebastian Cathedral</span>
-                </div>
-                
-                <div className="absolute bottom-1/3 right-1/4 bg-white border border-stone-200 px-3 py-1.5 rounded-full shadow-md text-[10px] font-bold text-gray-600 flex items-center gap-1">
-                  <span>🛍️ SM City Bacolod</span>
-                </div>
-
-                {/* Our Central Hub Marker */}
-                <div className="relative z-10 flex flex-col items-center">
-                  <div className="w-14 h-14 bg-[#52B447] text-white rounded-full flex items-center justify-center shadow-xl border-4 border-white animate-bounce">
-                    <MapPin className="w-6 h-6" />
+                {/* Floating Google Maps Place Card Banner */}
+                <a 
+                  href={STORE_INFO.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute top-4 left-4 right-4 sm:right-auto sm:max-w-xs bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-stone-200/90 text-left transition-all hover:bg-white hover:scale-[1.02] cursor-pointer group"
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <div>
+                      <h4 className="font-display font-black text-sm text-[#1E3F16] group-hover:text-[#52B447] transition-colors flex items-center gap-1.5">
+                        <MapPin className="w-4 h-4 text-red-500 shrink-0 fill-red-500" />
+                        <span>{STORE_INFO.googleMapsPlaceName}</span>
+                      </h4>
+                      <div className="flex items-center gap-1 mt-1 text-xs">
+                        <span className="font-bold text-amber-500">4.3</span>
+                        <div className="flex text-amber-400">
+                          <Star className="w-3 h-3 fill-amber-400" />
+                          <Star className="w-3 h-3 fill-amber-400" />
+                          <Star className="w-3 h-3 fill-amber-400" />
+                          <Star className="w-3 h-3 fill-amber-400" />
+                          <Star className="w-3 h-3 fill-amber-200" />
+                        </div>
+                        <span className="text-gray-400 text-[10px]">(9) · Fast food</span>
+                      </div>
+                    </div>
+                    <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-[#52B447] shrink-0 mt-0.5" />
                   </div>
-                  <div className="bg-[#224F18] text-white text-xs font-display font-black py-1.5 px-3.5 rounded-full mt-2.5 shadow-xl flex items-center gap-1.5 border border-green-800">
-                    <span className="w-1.5 h-1.5 bg-[#52B447] rounded-full animate-ping" />
-                    <span>Pocha Food Hub</span>
-                  </div>
-                </div>
+                  
+                  <p className="font-sans text-[11px] text-gray-600 mt-2 line-clamp-2">
+                    {STORE_INFO.address}
+                  </p>
 
-                {/* Scale HUD */}
-                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded text-[10px] font-mono text-gray-500 font-bold border border-stone-200">
-                  SCALE: 100m
-                </div>
+                  <div className="mt-2.5 pt-2 border-t border-gray-100 flex items-center justify-between text-[10px] font-bold text-[#52B447]">
+                    <span className="flex items-center gap-1">
+                      <Navigation className="w-3 h-3" /> Click to view on Google Maps
+                    </span>
+                    <span className="underline">&rarr;</span>
+                  </div>
+                </a>
+
+                {/* Bottom interactive button overlay */}
+                <a
+                  href={STORE_INFO.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute bottom-3 right-3 bg-[#1E3F16]/90 hover:bg-[#1E3F16] text-white backdrop-blur-sm px-3.5 py-2 rounded-xl text-xs font-display font-bold shadow-lg flex items-center gap-1.5 transition-all hover:scale-105"
+                >
+                  <MapPin className="w-3.5 h-3.5 text-red-400" />
+                  <span>View Exact Pin in Google Maps</span>
+                </a>
               </div>
 
               {/* Get Direction helper */}
@@ -198,15 +233,26 @@ export default function Location() {
                 <span className="text-xs text-gray-500 text-left font-sans">
                   * Located directly along Fuentebella Street in Bacolod. High motor parking space available!
                 </span>
-                <a 
-                  href={`https://google.com/maps/search/?api=1&query=${encodeURIComponent(STORE_INFO.address)}`} 
-                  target="_blank" 
-                  rel="noreferrer"
-                  className="shrink-0 flex items-center gap-1.5 bg-[#1E3F16] text-[#52B447] hover:text-white hover:bg-[#52B447] font-display font-black text-xs px-5 py-3 rounded-xl transition-all"
-                >
-                  <Send className="w-4 h-4" />
-                  <span>Calculate Real Route</span>
-                </a>
+                <div className="flex items-center gap-2 shrink-0 w-full sm:w-auto">
+                  <a 
+                    href={STORE_INFO.googleMapsUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 bg-[#EEF8EE] text-[#1E3F16] hover:bg-[#E1F2E0] font-display font-black text-xs px-4 py-3 rounded-xl transition-all border border-[#CBDDC7]"
+                  >
+                    <ExternalLink className="w-4 h-4 text-[#52B447]" />
+                    <span>Open in Maps</span>
+                  </a>
+                  <a 
+                    href={STORE_INFO.directionsUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 bg-[#1E3F16] text-[#52B447] hover:text-white hover:bg-[#52B447] font-display font-black text-xs px-5 py-3 rounded-xl transition-all shadow-md"
+                  >
+                    <Send className="w-4 h-4" />
+                    <span>Get Directions</span>
+                  </a>
+                </div>
               </div>
 
             </div>
