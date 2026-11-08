@@ -24,7 +24,7 @@ export default function Services() {
             Services & Conveniences
           </h2>
           <p className="font-sans text-sm text-gray-500 mt-2">
-            Whether you want to chill in our study-friendly lounge or enjoy hot ramen in bed, we've got you covered.
+            Whether you want to drop by our store or enjoy your favorite drinks and snacks at home, we've got you covered.
           </p>
           <div className="h-1.5 w-16 bg-[#52B447] mx-auto rounded-full mt-4" />
         </div>
@@ -83,9 +83,6 @@ export default function Services() {
               <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse group-hover:bg-white" />
               <span>Order on Foodpanda</span>
             </a>
-            <span className="font-display font-black text-xs text-green-600 bg-green-50 px-3.5 py-2.5 rounded-full border border-green-100 uppercase tracking-wider">
-              GrabFood Partner
-            </span>
           </div>
         </div>
 

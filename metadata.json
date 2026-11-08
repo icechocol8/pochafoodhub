@@ -1,6 +1,6 @@
 {
   "name": "Pocha Food Hub",
-  "description": "A digital menu and storefront for Pocha Food Hub featuring their specialty milk teas, location, services, and story.",
+  "description": "Visit Pocha Food Hub on Fuentebella St, Bacolod City. Enjoy authentic handcrafted milk teas, iced coffee, and golden crispy snacks in a cozy neighborhood hub.",
   "requestFramePermissions": ["geolocation"],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

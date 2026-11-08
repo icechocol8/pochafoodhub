@@ -123,9 +123,6 @@ export default function App() {
                   </span>
                 </div>
               </div>
-              <p className="font-sans text-xs text-gray-400 leading-relaxed mb-6">
-                Warm Pojangmacha street food recipes meets carefully cooled, brown-sugar boba teas. Crafted fresh for Bacolod City sweet-tooth adventurers.
-              </p>
               
               {/* Simple Human Brand Socials */}
               <div className="flex items-center gap-3">
@@ -207,7 +204,7 @@ export default function App() {
                 Store Status
               </h4>
               <p className="text-xs text-gray-400 mb-3 leading-normal">
-                Open Daily from 11:00 AM. Dine-in seats available with direct study charging units.
+                Open Daily from 11:00 AM. Casual dine-in and quick takeout available.
               </p>
               <div className="flex items-center gap-2 bg-green-950/60 p-3 rounded-xl border border-green-900">
                 <Clock className="w-4 h-4 text-[#52B447]" />

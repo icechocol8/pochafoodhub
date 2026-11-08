@@ -254,8 +254,8 @@ export const MENU_ITEMS: MenuItem[] = [
 export const SERVICES: ServiceItem[] = [
   {
     id: 'dine-in',
-    title: 'Cozy Dine-In Space',
-    description: 'Immerse yourself in our aesthetic store environment. Relax, play board games, or work while enjoying your favorite milk teas and spicy snack plates.',
+    title: 'Dine-In Area',
+    description: 'Simple and casual seating available to enjoy your fresh milk tea and snacks at the store.',
     iconName: 'Utensils'
   },
   {
@@ -266,8 +266,8 @@ export const SERVICES: ServiceItem[] = [
   },
   {
     id: 'delivery',
-    title: 'Instant Delivery Partner',
-    description: 'Craving comfort from home? We are live on GrabFood and Foodpanda! Get fresh, icy-cold boba delivered straight to your doorstep.',
+    title: 'Foodpanda Delivery',
+    description: 'Craving comfort from home? Order directly on Foodpanda and get fresh, chilled drinks and snacks delivered to your doorstep.',
     iconName: 'Bike'
   }
 ];
